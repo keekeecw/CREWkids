@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Warrior's Mind - Interactive Activities</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #1a202c;
+            color: #e2e8f0;
+        }
+        .activity-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .activity-card {
+            background-color: #2d3748;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .btn-primary {
+            background-color: #4299e1;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #3182ce;
+        }
+        .notification {
+            display: flex;
+            align-items: center;
+            background-color: #4a5568;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .notification.unread {
+            border-left: 4px solid #48bb78;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100">
+    <div class="container mx-auto p-4">
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-bold text-blue-400">The Warrior's Mind</h1>
+            <div id="notifications-container" class="notifications w-1/3"></div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="space-y-6">
+                <div id="user-profile-setup" class="activity-card">
+                    <h2 class="text-2xl font-semibold mb-4 text-blue-300">Create Your Warrior Profile</h2>
+                    <form id="profile-form" class="space-y-4">
+                        <div>
+                            <label class="block mb-2">Name (Optional)</label>
+                            <input type="text" id="profile-name" class="w-full bg-gray-700 p-2 rounded">
+                        </div>
+                        <div>
+                            <label class="block mb-2">Age</label>
+                            <input type="number" id="profile-age" min="13" max="19" class="w-full bg-gray-700 p-2 rounded">
+                        </div>
+                        <div>
+                            <label class="block mb-2">Your Interests (Select Multiple)</label>
+                            <div class="grid grid-cols-3 gap-2">
+                                <label class="inline-flex items-center">
+                                    <input type="checkbox" value="sports" class="form-checkbox">
+                                    <span class="ml-2">Sports</span>
+                                </label>
+                                <label class="inline-flex items-center">
+                                    <input type="checkbox" value="music" class="form-checkbox">
+                                    <span class="ml-2">Music</span>
+                                </label>
+                                <label class="inline-flex items-center">
+                                    <input type="checkbox" value="technology" class="form-checkbox">
+                                    <span class="ml-2">Technology</span>
+                                </label>
+                                <label class="inline-flex items-center">
+                                    <input type="checkbox" value="art" class="form-checkbox">
+                                    <span class="ml-2">Art</span>
+                                </label>
+                                <label class="inline-flex items-center">
+                                    <input type="checkbox" value="reading" class="form-checkbox">
+                                    <span class="ml-2">Reading</span>
+                                </label>
+                                <label class="inline-flex items-center">
+                                    <input type="checkbox" value="gaming" class="form-checkbox">
+                                    <span class="ml-2">Gaming</span>
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-primary">Create Profile</button>
+                    </form>
+                </div>
+
+                <div id="progress-dashboard" class="activity-card">
+                    <!-- Progress stats will be dynamically populated -->
+                </div>
+
+                <div id="challenges-container" class="activity-card">
+                    <!-- Challenges will be dynamically populated -->
+                </div>
+
+                <div id="resources-container" class="activity-card">
+                    <!-- Resources will be dynamically populated -->
+                </div>
+
+                <div id="mental-health-assessment" class="activity-card">
+                    <h2 class="text-2xl font-semibold mb-4 text-blue-300">Mental Wellness Check-In</h2>
+                    <button onclick="mentalHealthModule.initializeMentalHealthAssessment()" class="btn-primary">
+                        Start Assessment
+                    </button>
+                    <button onclick="mentalHealthModule.viewAssessmentHistory()" class="btn-primary ml-2 bg-green-600">
+                        View Assessment History
+                    </button>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <div class="activity-card">
+                    <h2 class="text-2xl font-semibold mb-4 text-blue-300">5-4-3-2-1 Grounding Technique</h2>
+                    <div id="grounding-activity-container" class="bg-gray-800 p-6 rounded-lg">
+                        <button onclick="groundingActivity.start()" class="btn-primary">
+                            Start Grounding Activity
+                        </button>
+                    </div>
+                    <div id="past-journals" class="mt-4 bg-gray-800 p-6 rounded-lg">
+                        <button onclick="groundingActivity.viewPastJournals()" class="btn-primary">
+                            View Past Journal Entries
+                        </button>
+                    </div>
+                </div>
+
+                <div class="activity-card">
+                    <h2 class="text-2xl font-semibold mb-4 text-blue-300">Role Model Analysis Worksheet</h2>
+                    <div id="role-model-worksheet" class="bg-gray-800 p-6 rounded-lg">
+                        <button onclick="roleModelWorksheet.initializeWorksheet()" class="btn-primary">
+                            Start Role Model Worksheet
+                        </button>
+                    </div>
+                </div>
+
+                <div class="activity-card">
+                    <h2 class="text-2xl font-semibold mb-4 text-blue-300">Daily Journaling Prompt</h2>
+                    <div id="journaling-prompt" class="bg-gray-800 p-6 rounded-lg">
+                        <p id="daily-prompt" class="text-xl mb-4"></p>
+                        <textarea id="journal-entry" class="w-full bg-gray-700 p-2 rounded h-40" placeholder="Write your thoughts here..."></textarea>
+                        <button onclick="saveJournalEntry()" class="btn-primary mt-4">Save Journal Entry</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Resource Modal Container -->
+    <div id="resource-modal-container" style="display: none;"></div>
+
+    <script src="js/interactive-core.js"></script>
+    <script src="js/grounding-activity.js"></script>
+    <script src="js/role-model-worksheet.js"></script>
+    <script src="js/challenges-module.js"></script>
+    <script src="js/resources-module.js"></script>
+    <script src="js/mental-health-module.js"></script>
+    <script>
+        // Profile Creation
+        document.getElementById('profile-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const profileData = {
+                name: document.getElementById('profile-name').value,
+                age: document.getElementById('profile-age').value,
+                interests: Array.from(document.querySelectorAll('input[type="checkbox"]:checked'))
+                    .map(checkbox => checkbox.value)
+            };
+            warriorMindSystem.createProfile(profileData);
+            document.getElementById('user-profile-setup').style.display = 'none';
+            warriorMindSystem.triggerAchievement('first_login');
+        });
+
+        // Journaling Prompt
+        function updateJournalingPrompt() {
+            const promptElement = document.getElementById('daily-prompt');
+            promptElement.textContent = warriorMindSystem.generateJournalingPrompt();
+        }
+
+        function saveJournalEntry() {
+            const entry = document.getElementById('journal-entry').value;
+            if (entry.trim()) {
+                // Save journal entry logic would go here
+                // For now, just show a notification
+                warriorMindSystem.createNotification('Journal entry saved successfully! 📝');
+                document.getElementById('journal-entry').value = '';
+                updateJournalingPrompt();
+            }
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            updateJournalingPrompt();
+            warriorMindSystem.renderNotifications();
+            warriorMindSystem.renderProgressDashboard();
+            challengesSystem.initializeChallengesView();
+            resourcesSystem.initializeResourcesView();
+        });
+    </script>
+</body>
+</html>

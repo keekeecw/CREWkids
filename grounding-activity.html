@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5-4-3-2-1 Grounding Technique</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #1a202c;
+            color: #e2e8f0;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col items-center justify-center p-4">
+    <div class="max-w-md w-full bg-gray-800 rounded-xl shadow-lg p-6">
+        <h1 class="text-2xl font-bold mb-4 text-center text-blue-400">5-4-3-2-1 Grounding Technique</h1>
+        
+        <div id="instructionContainer" class="mb-4">
+            <p class="text-gray-300 mb-2">Use this technique when you're feeling overwhelmed or anxious. Take your time with each step.</p>
+        </div>
+
+        <div id="activitySteps" class="space-y-4">
+            <div class="step bg-gray-700 p-4 rounded-lg">
+                <h2 class="font-semibold text-lg mb-2 text-blue-300">5 Things You Can See</h2>
+                <input type="text" id="see1" class="w-full bg-gray-600 text-gray-100 p-2 rounded mb-2" placeholder="First thing you see">
+                <input type="text" id="see2" class="w-full bg-gray-600 text-gray-100 p-2 rounded mb-2" placeholder="Second thing you see">
+                <input type="text" id="see3" class="w-full bg-gray-600 text-gray-100 p-2 rounded mb-2" placeholder="Third thing you see">
+                <input type="text" id="see4" class="w-full bg-gray-600 text-gray-100 p-2 rounded mb-2" placeholder="Fourth thing you see">
+                <input type="text" id="see5" class="w-full bg-gray-600 text-gray-100 p-2 rounded" placeholder="Fifth thing you see">
+            </div>
+
+            <div class="step bg-gray-700 p-4 rounded-lg">
+                <h2 class="font-semibold text-lg mb-2 text-blue-300">4 Things You Can Touch</h2>
+                <input type="text" id="touch1" class="w-full bg-gray-600 text-gray-100 p-2 rounded mb-2" placeholder="First thing you can touch">
+                <input type="text" id="touch2" class="w-full bg-gray-600 text-gray-100 p-2 rounded mb-2" placeholder="Second thing you can touch">
+                <input type="text" id="touch3" class="w-full bg-gray-600 text-gray-100 p-2 rounded mb-2" placeholder="Third thing you can touch">
+                <input type="text" id="touch4" class="w-full bg-gray-600 text-gray-100 p-2 rounded" placeholder="Fourth thing you can touch">
+            </div>
+
+            <div class="step bg-gray-700 p-4 rounded-lg">
+                <h2 class="font-semibold text-lg mb-2 text-blue-300">3 Things You Can Hear</h2>
+                <input type="text" id="hear1" class="w-full bg-gray-600 text-gray-100 p-2 rounded mb-2" placeholder="First sound you hear">
+                <input type="text" id="hear2" class="w-full bg-gray-600 text-gray-100 p-2 rounded mb-2" placeholder="Second sound you hear">
+                <input type="text" id="hear3" class="w-full bg-gray-600 text-gray-100 p-2 rounded" placeholder="Third sound you hear">
+            </div>
+
+            <div class="step bg-gray-700 p-4 rounded-lg">
+                <h2 class="font-semibold text-lg mb-2 text-blue-300">2 Things You Can Smell</h2>
+                <input type="text" id="smell1" class="w-full bg-gray-600 text-gray-100 p-2 rounded mb-2" placeholder="First smell you notice">
+                <input type="text" id="smell2" class="w-full bg-gray-600 text-gray-100 p-2 rounded" placeholder="Second smell you notice">
+            </div>
+
+            <div class="step bg-gray-700 p-4 rounded-lg">
+                <h2 class="font-semibold text-lg mb-2 text-blue-300">1 Thing You Can Taste</h2>
+                <input type="text" id="taste1" class="w-full bg-gray-600 text-gray-100 p-2 rounded" placeholder="Taste you can identify">
+            </div>
+        </div>
+
+        <div class="mt-4 flex justify-between">
+            <button id="saveBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Save Reflection
+            </button>
+            <button id="resetBtn" class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                Reset
+            </button>
+        </div>
+
+        <div id="savedReflections" class="mt-4 bg-gray-700 p-4 rounded-lg hidden">
+            <h3 class="text-lg font-semibold mb-2 text-blue-300">Your Past Reflections</h3>
+            <ul id="reflectionsList" class="space-y-2"></ul>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const saveBtn = document.getElementById('saveBtn');
+            const resetBtn = document.getElementById('resetBtn');
+            const savedReflectionsContainer = document.getElementById('savedReflections');
+            const reflectionsList = document.getElementById('reflectionsList');
+
+            // Save reflection
+            saveBtn.addEventListener('click', () => {
+                const reflection = {
+                    see: [
+                        document.getElementById('see1').value,
+                        document.getElementById('see2').value,
+                        document.getElementById('see3').value,
+                        document.getElementById('see4').value,
+                        document.getElementById('see5').value
+                    ],
+                    touch: [
+                        document.getElementById('touch1').value,
+                        document.getElementById('touch2').value,
+                        document.getElementById('touch3').value,
+                        document.getElementById('touch4').value
+                    ],
+                    hear: [
+                        document.getElementById('hear1').value,
+                        document.getElementById('hear2').value,
+                        document.getElementById('hear3').value
+                    ],
+                    smell: [
+                        document.getElementById('smell1').value,
+                        document.getElementById('smell2').value
+                    ],
+                    taste: document.getElementById('taste1').value,
+                    timestamp: new Date().toLocaleString()
+                };
+
+                // Save to local storage
+                let savedReflections = JSON.parse(localStorage.getItem('5-4-3-2-1-reflections') || '[]');
+                savedReflections.push(reflection);
+                localStorage.setItem('5-4-3-2-1-reflections', JSON.stringify(savedReflections));
+
+                // Update reflections list
+                updateReflectionsList();
+
+                // Show saved reflections container
+                savedReflectionsContainer.classList.remove('hidden');
+
+                // Optional: Provide feedback
+                alert('Reflection saved successfully!');
+            });
+
+            // Reset form
+            resetBtn.addEventListener('click', () => {
+                document.querySelectorAll('input').forEach(input => input.value = '');
+            });
+
+            // Load and display past reflections
+            function updateReflectionsList() {
+                const savedReflections = JSON.parse(localStorage.getItem('5-4-3-2-1-reflections') || '[]');
+                reflectionsList.innerHTML = savedReflections.map((reflection, index) => `
+                    <li class="bg-gray-600 p-2 rounded">
+                        <div class="font-bold text-blue-300">Reflection ${savedReflections.length - index}</div>
+                        <div class="text-sm text-gray-300">${reflection.timestamp}</div>
+                        <details class="mt-1">
+                            <summary class="cursor-pointer text-gray-200">View Details</summary>
+                            <div class="mt-2 text-gray-300">
+                                <strong>5 Things Seen:</strong> ${reflection.see.filter(Boolean).join(', ')}<br>
+                                <strong>4 Things Touched:</strong> ${reflection.touch.filter(Boolean).join(', ')}<br>
+                                <strong>3 Things Heard:</strong> ${reflection.hear.filter(Boolean).join(', ')}<br>
+                                <strong>2 Things Smelled:</strong> ${reflection.smell.filter(Boolean).join(', ')}<br>
+                                <strong>1 Thing Tasted:</strong> ${reflection.taste}
+                            </div>
+                        </details>
+                    </li>
+                `).join('');
+            }
+
+            // Initial load of reflections
+            updateReflectionsList();
+            if (reflectionsList.children.length > 0) {
+                savedReflectionsContainer.classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
