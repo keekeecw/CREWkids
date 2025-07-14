@@ -1,0 +1,244 @@
+/* Custom Martial Arts Inspired Styles */
+
+/* Warrior Theme Colors */
+:root {
+    --warrior-red: #dc2626;
+    --warrior-gold: #f59e0b;
+    --warrior-dark: #1f2937;
+    --warrior-gradient: linear-gradient(135deg, var(--warrior-red), var(--warrior-gold));
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Hero section animations */
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(220, 38, 38, 0.1), rgba(245, 158, 11, 0.1));
+    z-index: 1;
+}
+
+/* Floating animation for hero content */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.hero-content {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Card hover effects */
+.card {
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Progress animations */
+.radial-progress {
+    transition: --value 0.5s ease;
+}
+
+/* Grounding exercise animations */
+@keyframes breathe {
+    0%, 100% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.1); opacity: 1; }
+}
+
+.breathing-circle {
+    animation: breathe 4s ease-in-out infinite;
+}
+
+/* Navigation active state */
+.nav-link.active {
+    background: var(--warrior-gradient);
+    color: white;
+    border-radius: 0.5rem;
+}
+
+/* Custom button styles */
+.btn-warrior {
+    background: var(--warrior-gradient);
+    border: none;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.btn-warrior:hover {
+    background: linear-gradient(135deg, #b91c1c, #d97706);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Mindfulness technique cards */
+.technique-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Journal entry animations */
+.journal-entry {
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: slideIn 0.5s ease forwards;
+}
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Goal progress bars */
+.goal-progress {
+    background: linear-gradient(90deg, var(--warrior-red), var(--warrior-gold));
+    height: 8px;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+/* Meditation timer circle */
+.meditation-timer {
+    width: 200px;
+    height: 200px;
+    border: 8px solid rgba(220, 38, 38, 0.2);
+    border-top: 8px solid var(--warrior-red);
+    border-radius: 50%;
+    animation: spin 2s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive design enhancements */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+    
+    .card-body {
+        padding: 1rem;
+    }
+}
+
+/* Achievement badges */
+.achievement-badge {
+    background: var(--warrior-gradient);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-weight: bold;
+    display: inline-block;
+    margin: 0.25rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Grounding exercise step indicators */
+.step-indicator {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--warrior-gradient);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin: 0 auto 1rem;
+}
+
+.step-indicator.completed {
+    background: #10b981;
+}
+
+.step-indicator.active {
+    animation: pulse 1.5s infinite;
+    box-shadow: 0 0 20px rgba(220, 38, 38, 0.5);
+}
+
+/* Mood indicators */
+.mood-great { color: #10b981; }
+.mood-good { color: #059669; }
+.mood-okay { color: #6b7280; }
+.mood-challenging { color: #f59e0b; }
+.mood-tough { color: #dc2626; }
+
+/* Loading states */
+.loading-spinner {
+    border: 4px solid rgba(220, 38, 38, 0.1);
+    border-left: 4px solid var(--warrior-red);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+/* Success animations */
+@keyframes success {
+    0% { transform: scale(0.8); opacity: 0; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.success-animation {
+    animation: success 0.6s ease;
+}
+
+/* Dark theme enhancements */
+[data-theme="dark"] .technique-card {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .hero {
+    background: linear-gradient(135deg, #1f2937, #111827);
+}
+
+/* Print styles */
+@media print {
+    .navbar, .footer, .modal, .btn {
+        display: none !important;
+    }
+    
+    .hero {
+        min-height: auto;
+        padding: 2rem 0;
+    }
+    
+    .card {
+        break-inside: avoid;
+        margin-bottom: 1rem;
+    }
+}
