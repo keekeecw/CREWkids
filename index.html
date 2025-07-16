@@ -119,6 +119,250 @@
         </div>
     </section>
 
+<!-- Journal Section -->
+    <section id="journal" class="py-16 bg-base-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4">Warrior's Journal</h2>
+                <p class="text-lg text-base-content/70">Document your journey and track your growth</p>
+            </div>
+            
+            <div class="max-w-6xl mx-auto">
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <!-- New Entry -->
+                    <div class="card bg-base-200 shadow-xl">
+                        <div class="card-body">
+                            <h3 class="card-title">New Entry</h3>
+                            <div class="form-control mb-4">
+                                <label class="label">
+                                    <span class="label-text">How are you feeling today?</span>
+                                </label>
+                                <select class="select select-bordered" id="mood-select">
+                                    <option value="great">Great - Ready to conquer!</option>
+                                    <option value="good">Good - Feeling positive</option>
+                                    <option value="okay">Okay - Neutral</option>
+                                    <option value="challenging">Challenging - Working through it</option>
+                                    <option value="tough">Tough - Need support</option>
+                                </select>
+                            </div>
+                            <div class="form-control mb-4">
+                                <label class="label">
+                                    <span class="label-text">What's on your mind?</span>
+                                </label>
+                                <textarea class="textarea textarea-bordered h-32" placeholder="Share your thoughts, challenges, victories..." id="journal-content"></textarea>
+                            </div>
+                            <button class="btn btn-primary" onclick="journalManager.addEntry()">Save Entry</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Entries -->
+                    <div class="card bg-base-200 shadow-xl">
+                        <div class="card-body">
+                            <h3 class="card-title">Recent Entries</h3>
+                            <div class="max-h-96 overflow-y-auto" id="journal-entries">
+                                <div class="text-center text-base-content/50 py-8">
+                                    <p>No entries yet. Start your journey by writing your first entry!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mindfulness Techniques -->
+    <section id="mindfulness" class="py-16 bg-base-200">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4">Mindfulness Techniques</h2>
+                <p class="text-lg text-base-content/70">Ancient wisdom for modern warriors</p>
+            </div>
+            
+            <div class="max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Breathing Technique -->
+                    <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow">
+                        <div class="card-body">
+                            <div class="text-center mb-4">
+                                <div class="w-16 h-16 mx-auto bg-primary rounded-full flex items-center justify-center text-2xl">🫁</div>
+                            </div>
+                            <h3 class="card-title justify-center">Warrior's Breath</h3>
+                            <p class="text-center text-sm text-base-content/70">4-7-8 breathing technique for instant calm</p>
+                            <div class="card-actions justify-center mt-4">
+                                <button class="btn btn-primary btn-sm" onclick="mindfulnessGuide.startTechnique('breathing')">Start</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Body Scan -->
+                    <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow">
+                        <div class="card-body">
+                            <div class="text-center mb-4">
+                                <div class="w-16 h-16 mx-auto bg-secondary rounded-full flex items-center justify-center text-2xl">🧘</div>
+                            </div>
+                            <h3 class="card-title justify-center">Body Awareness</h3>
+                            <p class="text-center text-sm text-base-content/70">Scan and release tension like a martial artist</p>
+                            <div class="card-actions justify-center mt-4">
+                                <button class="btn btn-secondary btn-sm" onclick="mindfulnessGuide.startTechnique('bodyscan')">Start</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Visualization -->
+                    <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow">
+                        <div class="card-body">
+                            <div class="text-center mb-4">
+                                <div class="w-16 h-16 mx-auto bg-accent rounded-full flex items-center justify-center text-2xl">🎯</div>
+                            </div>
+                            <h3 class="card-title justify-center">Victory Visualization</h3>
+                            <p class="text-center text-sm text-base-content/70">Mental training for success</p>
+                            <div class="card-actions justify-center mt-4">
+                                <button class="btn btn-accent btn-sm" onclick="mindfulnessGuide.startTechnique('visualization')">Start</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Goals Section -->
+    <section id="goals" class="py-16 bg-base-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4">Personal Growth Tracking</h2>
+                <p class="text-lg text-base-content/70">Set goals, track progress, achieve greatness</p>
+            </div>
+            
+            <div class="max-w-6xl mx-auto">
+                <div class="grid lg:grid-cols-3 gap-8">
+                    <!-- Add Goal -->
+                    <div class="card bg-base-200 shadow-xl">
+                        <div class="card-body">
+                            <h3 class="card-title">New Goal</h3>
+                            <div class="form-control mb-4">
+                                <input type="text" placeholder="Goal title" class="input input-bordered" id="goal-title">
+                            </div>
+                            <div class="form-control mb-4">
+                                <textarea placeholder="Description" class="textarea textarea-bordered h-20" id="goal-description"></textarea>
+                            </div>
+                            <div class="form-control mb-4">
+                                <input type="date" class="input input-bordered" id="goal-deadline">
+                            </div>
+                            <button class="btn btn-primary" onclick="progressTracker.addGoal()">Add Goal</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Active Goals -->
+                    <div class="lg:col-span-2">
+                        <div class="card bg-base-200 shadow-xl">
+                            <div class="card-body">
+                                <h3 class="card-title">Active Goals</h3>
+                                <div id="goals-list" class="space-y-4">
+                                    <div class="text-center text-base-content/50 py-8">
+                                        <p>No goals set yet. Create your first goal to start tracking your progress!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Progress Stats -->
+                <div class="mt-8">
+                    <div class="stats shadow w-full">
+                        <div class="stat">
+                            <div class="stat-title">Total Goals</div>
+                            <div class="stat-value" id="total-goals">0</div>
+                            <div class="stat-desc">Goals created</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-title">Completed</div>
+                            <div class="stat-value text-success" id="completed-goals">0</div>
+                            <div class="stat-desc">Goals achieved</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-title">Journal Entries</div>
+                            <div class="stat-value text-primary" id="journal-count">0</div>
+                            <div class="stat-desc">Reflections written</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-title">Current Streak</div>
+                            <div class="stat-value text-warning" id="current-streak">0</div>
+                            <div class="stat-desc">Days active</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Role Models Section -->
+    <section id="stories" class="py-16 bg-base-200">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4">Warrior Role Models</h2>
+                <p class="text-lg text-base-content/70">Learn from those who've walked the path</p>
+            </div>
+            
+            <div class="max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Role Model 1 -->
+                    <div class="card bg-base-100 shadow-xl">
+                        <div class="card-body">
+                            <h3 class="card-title">The Disciplined Athlete</h3>
+                            <p class="text-sm text-base-content/70 mb-4">Marcus overcame anxiety through martial arts training and mindfulness. He learned that true strength comes from controlling your mind, not just your body.</p>
+                            <div class="badge badge-primary">Discipline</div>
+                            <div class="badge badge-secondary">Mental Health</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Role Model 2 -->
+                    <div class="card bg-base-100 shadow-xl">
+                        <div class="card-body">
+                            <h3 class="card-title">The Mindful Leader</h3>
+                            <p class="text-sm text-base-content/70 mb-4">Jake transformed from an angry teenager to a youth mentor by practicing daily meditation and journaling. He now helps other teens find their path.</p>
+                            <div class="badge badge-accent">Leadership</div>
+                            <div class="badge badge-info">Emotional Growth</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Role Model 3 -->
+                    <div class="card bg-base-100 shadow-xl">
+                        <div class="card-body">
+                            <h3 class="card-title">The Resilient Student</h3>
+                            <p class="text-sm text-base-content/70 mb-4">David used mindfulness techniques to overcome academic pressure and social anxiety. He learned that vulnerability is a form of courage.</p>
+                            <div class="badge badge-warning">Resilience</div>
+                            <div class="badge badge-success">Academic Success</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mindfulness Technique Modal -->
+    <dialog id="technique-modal" class="modal">
+        <div class="modal-box max-w-2xl">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            </form>
+            <h3 class="font-bold text-lg mb-4" id="technique-title">Mindfulness Technique</h3>
+            <div id="technique-content">
+                <div class="text-center mb-6">
+                    <div class="radial-progress text-primary" style="--value:0;" id="technique-progress">0%</div>
+                </div>
+                <div id="technique-instructions" class="prose max-w-none">
+                    <p>Prepare to begin your mindfulness practice...</p>
+                </div>
+                <div class="modal-action">
+                    <button class="btn btn-primary" id="technique-action" onclick="mindfulnessGuide.nextStep()">Begin</button>
+                </div>
+            </div>
+        </div>
+    </dialog>
+
     <!-- Footer -->
     <footer class="footer footer-center p-10 bg-base-300 text-base-content">
         <aside>
@@ -132,5 +376,11 @@
     <script type="module" src="main.js"></script>
     <script type="module" src="grounding.js"></script>
     <script type="module" src="journal.js"></script>
+    <script type="module" src="interactive-core.js"></script>
+    <script type="module" src="grounding-activity.js"></script>
+    <script type="module" src="role-model-worksheet.js"></script>
+    <script type="module" src="challenges-module.js"></script>
+    <script type="module" src="resources-module.js"></script>
+    <script type="module" src="mental-health-module.js"></script>
 </body>
 </html>
