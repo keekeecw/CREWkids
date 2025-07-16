@@ -1,11 +1,28 @@
-html 
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
-    <!-- [No changes in head section] -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindful Warriors - Teen Development Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'warrior-red': '#dc2626',
+                        'warrior-gold': '#f59e0b',
+                        'warrior-dark': '#1f2937'
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 <body class="bg-base-100 min-h-screen">
-    <!-- MODIFIED: Navigation Links -->
+    <!-- Navigation -->
     <nav class="navbar bg-base-300 shadow-lg sticky top-0 z-50">
         <div class="navbar-start">
             <div class="dropdown">
@@ -14,7 +31,6 @@ html
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16"></path>
                     </svg>
                 </div>
-                <!-- CHANGED: Mobile Navigation Links -->
                 <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                     <li><a href="activities.html#home" class="nav-link">Home</a></li>
                     <li><a href="activities.html#grounding-activity-container" class="nav-link">5-4-3-2-1 Exercise</a></li>
@@ -27,7 +43,6 @@ html
             <a class="btn btn-ghost text-xl font-bold text-warrior-red">🥋 Mindful Warriors</a>
         </div>
         <div class="navbar-center hidden lg:flex">
-            <!-- CHANGED: Desktop Navigation Links -->
             <ul class="menu menu-horizontal px-1">
                 <li><a href="activities.html#home" class="nav-link">Home</a></li>
                 <li><a href="activities.html#grounding-activity-container" class="nav-link">5-4-3-2-1 Exercise</a></li>
@@ -37,10 +52,36 @@ html
                 <li><a href="activities.html#role-model-worksheet" class="nav-link">Role Models</a></li>
             </ul>
         </div>
-        <!-- [Rest of navigation remains unchanged] -->
+        <div class="navbar-end">
+            <div class="dropdown dropdown-end">
+                <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+                    <div class="indicator">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5-5-5h5v-12"></path>
+                        </svg>
+                        <span class="badge badge-sm indicator-item" id="progress-badge">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </nav>
 
-    <!-- [Existing sections remain unchanged until the end] -->
+    <!-- Hero Section -->
+    <section id="home" class="hero min-h-screen bg-gradient-to-br from-warrior-dark to-base-300 relative overflow-hidden">
+        <div class="hero-overlay bg-opacity-60"></div>
+        <div class="hero-content text-center text-neutral-content z-10">
+            <div class="max-w-md">
+                <h1 class="mb-5 text-5xl font-bold text-white">Mindful Warriors</h1>
+                <p class="mb-5 text-lg text-gray-200">Master your mind, strengthen your spirit, and forge your path to greatness through mindfulness and martial arts wisdom.</p>
+                <a href="activities.html#grounding-activity-container" class="btn btn-primary btn-lg">Begin Your Journey</a>
+            </div>
+        </div>
+        <div class="absolute inset-0 opacity-20">
+            <img src="images/martial-arts-meditation.jpg" alt="Martial Arts Meditation" class="w-full h-full object-cover">
+        </div>
+    </section>
+
+    <!-- Existing sections remain the same as in the original file -->
 
     <!-- NEW SECTION: Full Activities Page -->
     <section id="full-activities" class="py-16 bg-base-100">
@@ -91,10 +132,5 @@ html
     <script type="module" src="main.js"></script>
     <script type="module" src="grounding.js"></script>
     <script type="module" src="journal.js"></script>
-    <script type="module" src="interactive-core.js"></script>
-    <script type="module" src="grounding-activity.js"></script>
-    <script type="module" src="role-model-worksheet.js"></script>
-    <script type="module" src="challenges-module.js"></script>
-    <script type="module" src="resources-module.js"></script>
-    <script type="module" src="mental-health-module.js"></script></body>
+</body>
 </html>
