@@ -92,25 +92,7 @@ class ResourcesSystem {
         this.userResourceProgress = JSON.parse(localStorage.getItem('userResourceProgress') || '{}');
     }
 
-    initializeResourcesView() {
-        const resourcesContainer = document.getElementById('resources-container');
-        resourcesContainer.innerHTML = `
-            <div class="resources-section bg-gray-700 p-6 rounded-lg">
-                <h2 class="text-2xl font-semibold mb-4 text-blue-300">Warrior's Resources Hub</h2>
-                
-                <div class="resource-categories grid md:grid-cols-3 gap-4">
-                    ${this.renderResourceCategories()}
-                </div>
-
-                <div class="support-resources mt-8">
-                    <h3 class="text-xl font-semibold mb-4 text-blue-300">Emergency Support</h3>
-                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        ${this.renderSupportResources()}
-                    </div>
-                </div>
-            </div>
-        `;
-    }
+   
 
     renderResourceCategories() {
         return this.resourceCategories.map(category => `
